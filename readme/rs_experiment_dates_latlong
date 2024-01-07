@@ -1,0 +1,54 @@
+UDSC64 https://en.wikipedia.org/wiki/Usuda_Deep_Space_Center
+
+IDSN32 https://en.wikipedia.org/wiki/Indian_Deep_Space_Network
+
+
+# Summary of results
+#     ------------------
+#
+#       The radio occultation experiments conducted so far are summarized in
+#       the table below. The columns are:
+#
+#         - the orbit number,
+#         - the antenna (ground station),
+#         - the UTC time when the tangential point of the straight line between
+#           the spacecraft and the ground station was occulted by the
+#           70-km-altitude surface of Venus,
+#         - the east longitude in degrees at the tangential point,
+#         - the north latitude in degrees at the tangential point, and
+#         - the local solar time in hours.
+#
+        Orbit  Antenna  Time_UTC        longitude  latitude  local_time
+#        -----  -------  ----------------  ---------  --------  ----------
+            9  UDSC64   2016-03-03T22:42  356.49     -39.56    15.71
+            9  UDSC64   2016-03-03T23:22  175.34     -66.94     3.79
+           11  UDSC64   2016-03-24T21:43   53.13       0.17    16.21
+           11  UDSC64   2016-03-24T22:19  232.83     -36.11     4.24
+           13  UDSC64   2016-04-15T03:24  110.79       5.67    16.71
+           13  UDSC64   2016-04-15T03:53  290.72     -24.95     4.72
+           14  UDSC64   2016-04-26T00:34  140.33       6.53    16.96
+           14  UDSC64   2016-04-26T01:03  320.36     -19.94     4.97
+           15  UDSC64   2016-05-07T00:02  170.15       9.70    17.23
+           15  UDSC64   2016-05-07T00:33  350.22     -14.03     5.23
+           16  UDSC64   2016-05-18T01:55  200.28      15.29    17.49
+           16  UDSC64   2016-05-18T02:28   20.28      -7.26     5.50
+           21  UDSC64   2016-07-12T07:11  351.25      45.33    18.83
+           22  UDSC64   2016-07-23T02:42   20.70      49.65    19.11
+           22  UDSC64   2016-07-23T03:11  199.06       7.54     7.22
+           40  UDSC64   2017-02-06T01:48  178.97     -25.01     1.21
+           40  UDSC64   2017-02-06T02:09   13.82     -73.10    12.22
+           48  UDSC64   2017-05-04T19:48  309.98     -50.05    10.58
+           48  UDSC64   2017-05-04T20:02  238.28     -77.21    15.37
+           49  UDSC64   2017-05-15T21:34  336.20     -19.28    11.10
+           49  UDSC64   2017-05-15T22:00  157.25     -61.55    23.04
+           50  UDSC64   2017-05-26T21:05    1.87      -0.65    11.63
+           50  UDSC64   2017-05-26T21:32  181.19     -47.46    23.68
+           51  UDSC64   2017-06-06T18:22   27.95      14.71    12.12
+           51  UDSC64   2017-06-06T18:47  207.32     -38.92     0.16
+           54  IDSN32   2017-07-09T06:20  109.60      34.23    13.32
+           55  UDSC64   2017-07-20T05:06  137.96      41.56    13.67
+           55  UDSC64   2017-07-20T05:35  319.11      -1.57     1.59
+           56  IDSN32   2017-07-31T06:17  166.23      56.78    14.05
+           56  IDSN32   2017-07-31T06:47  348.42      15.48     1.90
+           57  IDSN32   2017-08-11T09:22  167.59      78.28    16.24
+           57  IDSN32   2017-08-11T09:44   18.09      39.03     2.21

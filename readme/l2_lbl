@@ -1,0 +1,373 @@
+PDS_VERSION_ID               = PDS3
+DD_VERSION_ID                = PDSCAT1R103
+
+
+/* ---- FILE CHARACTERISTICS ---- */
+
+FILE_NAME                    = "rs_20170811_090800_idsn32_l2_v10.tab"
+FILE_RECORDS                 = 39551
+RECORD_TYPE                  = FIXED_LENGTH
+RECORD_BYTES                 = 276
+
+
+/* ---- POINTERS TO DATA OBJECTS ---- */
+
+^DOPPLER_TABLE               = "rs_20170811_090800_idsn32_l2_v10.tab"
+
+
+/* ---- IDENTIFICATION DATA ELEMENTS ---- */
+
+MISSION_NAME                 = "VENUS CLIMATE ORBITER"
+MISSION_ALIAS_NAME           = {"PLANET-C", "AKATSUKI"}
+MISSION_ID                   = "VCO"
+DATA_SET_ID                  = "VCO-V-RS-3-OCC-V1.0"
+PRODUCT_ID                   = "RS_20170811_090800_IDSN32_L2_V10.TAB"
+PRODUCT_TYPE                 = "OCCULTATION"
+PRODUCT_CREATION_TIME        = 2018-09-25T16:25:06.000
+INSTRUMENT_HOST_NAME         = "VENUS CLIMATE ORBITER"
+INSTRUMENT_HOST_ID           = "VCO"
+INSTRUMENT_NAME              = "RADIO SCIENCE"
+INSTRUMENT_ID                = "RS"
+PRODUCER_ID                  = "VCO/RS TEAM"
+INSTITUTION_NAME             = "ISAS/JAXA"
+SOURCE_PRODUCT_ID            = {
+                                "AKT1N001TSSDS95RR2C01-17223090800.PRD"
+                               }
+MISSION_PHASE_NAME           = "PRIMARY SCIENCE PHASE"
+
+
+/* TIME INFORMATION */
+
+START_TIME                   = 2017-08-11T09:08:00.048
+OBSERVATION_TIME             = 2017-08-11T09:35:00.016
+STOP_TIME                    = 2017-08-11T10:01:59.984
+START_JULIAN_DATE_VALUE      = 2457976.880556111
+MID_JULIAN_DATE_VALUE        = 2457976.899305741
+STOP_JULIAN_DATE_VALUE       = 2457976.9180553705
+SPACECRAFT_CLOCK_START_COUNT = "2/3039404932"
+SPACECRAFT_CLOCK_STOP_COUNT  = "2/3039508608"
+
+
+/* TARGET INFORMATION */
+
+TARGET_NAME                  = VENUS
+VCO:SPHERICAL_RADIUS         = 6051.8 <km>
+
+
+/* ---- DESCRIPTIVE DATA ELEMENTS ---- */
+
+/* INSTRUMENTAL INFORMATION AND ITS CONDITION */
+
+OBSERVATION_TYPE             = "OCCULTATION"
+VCO:GROUND_STATION           = "IDSN32"
+
+
+/* ORBIT INFORMATION */
+
+ORBIT_NUMBER                 = 57
+PERIAPSIS_TIME               = 2017-08-11T10:12:01
+PERIAPSIS_LONGITUDE          = 55.77 <deg>
+PERIAPSIS_LATITUDE           = -1.59 <deg>
+PERIAPSIS_ALTITUDE           = 11796.67 <km>
+ORBITAL_INCLINATION          = 161.81 <deg>
+VCO:ORBITAL_ECCENTRICITY     = 0.907
+ASCENDING_NODE_LONGITUDE     = 232.75 <deg>
+PERIAPSIS_ARGUMENT_ANGLE     = 185.09 <deg>
+ORBITAL_SEMIMAJOR_AXIS       = 192413.92 <km>
+
+
+/* OTHERS */
+
+DESCRIPTION                  = "
+    This table contains Doppler and signal intensity measurements made by
+    Venus Climate Orbiter (VCO, also known as PLANET-C and AKATSUKI), X-band
+    radio occultation observations.
+  "
+NOTE                         = "
+    Signal is noisy before 09:20.
+  "
+
+
+/* ---- DATA OBJECTS DEFINITIONS ---- */
+
+OBJECT                       = DOPPLER_TABLE
+
+  NAME                       = DOPPLER_DATA
+  INTERCHANGE_FORMAT         = ASCII
+  ROW_BYTES                  = 276
+  ROWS                       = 39551
+  COLUMNS                    = 17
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 1
+    NAME                     = SAMPLE_NUMBER
+    DATA_TYPE                = ASCII_INTEGER
+    START_BYTE               = 1
+    BYTES                    = 5
+    FORMAT                   = "I5"
+    UNIT                     = "N/A"
+    VALID_MINIMUM            = 1
+    DESCRIPTION              = "
+        The number of this row in the table, starting from 1 in the first
+        row.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 2
+    NAME                     = UTC_TIME
+    DATA_TYPE                = TIME
+    START_BYTE               = 8
+    BYTES                    = 23
+    FORMAT                   = "A23"
+    UNIT                     = "N/A"
+    DESCRIPTION              = "
+        The UTC receiver date and time of this measurement, in the format
+        YYYY-MM-DDThh:mm:ss.SSS.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 3
+    NAME                     = DAY_OF_YEAR_WITH_FRACTIONS
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 33
+    BYTES                    = 14
+    FORMAT                   = "F14.10"
+    UNIT                     = "DAY"
+    VALID_MAXIMUM            = 368.0
+    VALID_MINIMUM            = 1.0
+    DESCRIPTION              = "
+        The day-of-year (and fraction) corresponding to UTC_TIME (column 2)
+        where 1.0000000000 is at 0h on 1st January of the current year.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 4
+    NAME                     = EPHEMERIS_SECONDS
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 49
+    BYTES                    = 16
+    FORMAT                   = "F16.6"
+    UNIT                     = "SECOND"
+    DESCRIPTION              = "
+        Seconds from 12h 1st January 2000 TDB (J2000.0) corresponding to
+        UTC_TIME (column 2); includes leap seconds, if any.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 5
+    NAME                     = DISTANCE
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 67
+    BYTES                    = 15
+    FORMAT                   = "F15.6"
+    UNIT                     = "KILOMETER"
+    VALID_MINIMUM            = 0.0
+    DESCRIPTION              = "
+        The impact parameter of the downlink geometric ray with respect to
+        Venus for the photon received at the UTC_TIME (column 2) in the
+        absence of Venus atmosphere.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 6
+    NAME                     = TRANSMIT_FREQUENCY_RAMP_REFERENCE_TIME
+    DATA_TYPE                = TIME
+    START_BYTE               = 84
+    BYTES                    = 23
+    FORMAT                   = "A23"
+    UNIT                     = "N/A"
+    DESCRIPTION              = "
+        The time (t_0) at which the transmitted frequency would have been
+        f_0 using the coefficients f_0 (`TRANSMIT FREQUENCY - CONSTANT TERM'
+        in column 7) and df (`TRANSMIT FREQUENCY - LINEAR TERM' in column
+        8). At any time t within the interval when those coefficients are
+        valid, the transmitted frequency f_t may be calculated from
+
+           f_t     = f_0 + df*(t-t_0)
+
+        The format is YYYY-MM-DDThh:mm:ss.SSS.
+
+        If the transmit time is not known or is irrelevant, the value
+        0000-00-00T00:00:00.000 may appear.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 7
+    NAME                     = "TRANSMIT FREQUENCY - CONSTANT TERM"
+    START_BYTE               = 109
+    BYTES                    = 17
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F17.6"
+    UNIT                     = "HERTZ"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -999999999.999999
+    DESCRIPTION              = "
+        The initial frequency f_0 of the transmit frequency ramp (at t_0).
+        See DESCRIPTION of TRANSMIT_FREQUENCY_RAMP_REFERENCE_TIME (column
+        6).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 8
+    NAME                     = "TRANSMIT FREQUENCY - LINEAR TERM"
+    START_BYTE               = 128
+    BYTES                    = 13
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F13.6"
+    UNIT                     = "HERTZ PER SECOND"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -99999.999999
+    DESCRIPTION              = "
+        The time derivative (df) of the transmitted frequency during the
+        interval beginning at t_0. See DESCRIPTION of
+        TRANSMIT_FREQUENCY_RAMP_REFERENCE_TIME (column 6).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 9
+    NAME                     = "OBSERVED X-BAND ANTENNA FREQUENCY"
+    START_BYTE               = 143
+    BYTES                    = 17
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F17.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -999999999.999999
+    DESCRIPTION              = "
+        Frequency of the signal at the receiving antenna at UTC_TIME
+        (column 2).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 10
+    NAME                     = "PREDICTED X-BAND ANTENNA FREQUENCY"
+    START_BYTE               = 162
+    BYTES                    = 17
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F17.6"
+    UNIT                     = "HERTZ"
+    DESCRIPTION              = "
+        Expected frequency of the signal at the receiving antenna at
+        UTC_TIME (column 2) based on the JAXA reconstructed SPKs. The
+        calculation includes geometrical effects (relative positions and
+        motions of ground station and spacecraft, including the Earth
+        rotation and light time adjustments). Correction for propagation
+        through the Earth's neutral atmosphere is not made.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 11
+    NAME                     = CORRECTION_OF_EARTH_ATMOSPHERE_PROPAGATION
+    START_BYTE               = 181
+    BYTES                    = 9
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F9.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -9.999999
+    DESCRIPTION              = "
+        Frequency correction term for the propagation of the signal in the
+        Earth atmosphere.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 12
+    NAME                     = "RESIDUAL CALIBRATED X-BAND FREQUENCY SHIFT"
+    START_BYTE               = 192
+    BYTES                    = 15
+    DATA_TYPE                = ASCII_REAL
+    UNIT                     = "HERTZ"
+    FORMAT                   = "F15.6"
+    DESCRIPTION              = "
+        Value of `OBSERVED X-BAND ANTENNA FREQUENCY' (column 9) minus
+        value of `PREDICTED X-BAND ANTENNA FREQUENCY' (column 10).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 13
+    NAME                     = "SIGNAL LEVEL X-BAND"
+    START_BYTE               = 209
+    BYTES                    = 11
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "E11.4"
+    UNIT                     = "N/A"
+    INVALID_CONSTANT         = -0.9999E+01
+    DESCRIPTION              = "
+        Signal level in arbitrary linear unit with the effect of inaccurate
+        antenna pointing corrected (relative unit).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 14
+    NAME                     = DIFFERENTIAL_DOPPLER
+    START_BYTE               = 222
+    BYTES                    = 17
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F17.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -999.999999
+    DESCRIPTION              = "
+        Contribution of dispersive media to the received signal frequency
+        calculated from two coherent bands.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 15
+    NAME                     = "SIGMA OBSERVED X-BAND ANTENNA FREQUENCY"
+    START_BYTE               = 241
+    BYTES                    = 13
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F13.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -99999.999999
+    DESCRIPTION              = "
+        A statistical measure of the error in determining `OBSERVED X-BAND
+        ANTENNA FREQUENCY' (column 9).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 16
+    NAME                     = "SIGNAL QUALITY X-BAND"
+    START_BYTE               = 256
+    BYTES                    = 6
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "F6.1"
+    UNIT                     = "DECIBEL"
+    INVALID_CONSTANT         = -999.9
+    DESCRIPTION              = "
+        Ratio of observed received signal strength to the statistical
+        standard deviation of the measurement.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 17
+    NAME                     = "SIGMA SIGNAL LEVEL X-BAND"
+    START_BYTE               = 264
+    BYTES                    = 11
+    DATA_TYPE                = ASCII_REAL
+    FORMAT                   = "E11.4"
+    UNIT                     = "N/A"
+    INVALID_CONSTANT         = -0.9999E+01
+    DESCRIPTION              = "
+        A statistical measure of the error in determining `SIGNAL LEVEL
+        X-BAND' (column 13).
+      "
+  END_OBJECT                 = COLUMN
+
+END_OBJECT                   = DOPPLER_TABLE
+
+END

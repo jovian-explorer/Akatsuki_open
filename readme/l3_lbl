@@ -1,0 +1,384 @@
+PDS_VERSION_ID               = PDS3
+DD_VERSION_ID                = PDSCAT1R103
+
+
+/* ---- FILE CHARACTERISTICS ---- */
+
+FILE_NAME                    = "rs_20160303_223100_udsc64_l3_e_v10.tab"
+FILE_RECORDS                 = 336
+RECORD_TYPE                  = FIXED_LENGTH
+RECORD_BYTES                 = 306
+
+
+/* ---- POINTERS TO DATA OBJECTS ---- */
+
+^REFR_TABLE                  = "rs_20160303_223100_udsc64_l3_e_v10.tab"
+
+
+/* ---- IDENTIFICATION DATA ELEMENTS ---- */
+
+MISSION_NAME                 = "VENUS CLIMATE ORBITER"
+MISSION_ALIAS_NAME           = ('PLANET-C', 'AKATSUKI')
+MISSION_ID                   = "VCO"
+DATA_SET_ID                  = "VCO-V-RS-5-OCC-V1.0"
+PRODUCT_ID                   = "RS_20160303_223100_UDSC64_L3_E_V10.TAB"
+PRODUCT_TYPE                 = "OCCULTATION"
+PRODUCT_CREATION_TIME        = 2018-09-28T00:56:38.712
+INSTRUMENT_HOST_NAME         = "VENUS CLIMATE ORBITER"
+INSTRUMENT_HOST_ID           = "VCO"
+INSTRUMENT_NAME              = "RADIO SCIENCE"
+INSTRUMENT_ID                = "RS"
+PRODUCER_ID                  = "VCO/RS TEAM"
+INSTITUTION_NAME             = "ISAS/JAXA"
+SOURCE_PRODUCT_ID            = "RS_20160303_223100_UDSC64_L2_V10.TAB"
+MISSION_PHASE_NAME           = "PRIMARY SCIENCE PHASE"
+
+
+/* TIME INFORMATION */
+
+START_TIME                   = 2016-03-03T23:17:09.324
+OBSERVATION_TIME             = 2016-03-03T23:20:05.791
+STOP_TIME                    = 2016-03-03T23:23:02.259
+START_JULIAN_DATE_VALUE      = 2457451.4702468053
+MID_JULIAN_DATE_VALUE        = 2457451.472289253
+STOP_JULIAN_DATE_VALUE       = 2457451.474331701
+SPACECRAFT_CLOCK_START_COUNT = "2/1586771808"
+SPACECRAFT_CLOCK_STOP_COUNT  = "2/1586783101"
+
+
+/* TARGET INFORMATION */
+
+TARGET_NAME                  = VENUS
+VCO:SPHERICAL_RADIUS         = 6051.8 <km>
+
+
+/* ---- DESCRIPTIVE DATA ELEMENTS ---- */
+
+/* INSTRUMENTAL INFORMATION AND ITS CONDITION */
+
+OBSERVATION_TYPE             = "OCCULTATION"
+VCO:GROUND_STATION           = "UDSC64"
+
+
+/* ORBIT INFORMATION */
+
+ORBIT_NUMBER                 = 9
+PERIAPSIS_TIME               = 2016-03-03T21:19:03
+PERIAPSIS_LONGITUDE          = 9.27 <deg>
+PERIAPSIS_LATITUDE           = 4.22 <deg>
+PERIAPSIS_ALTITUDE           = 5478.3 <km>
+ORBITAL_INCLINATION          = 169.29 <deg>
+VCO:ORBITAL_ECCENTRICITY     = 0.939
+ASCENDING_NODE_LONGITUDE     = 216.97 <deg>
+PERIAPSIS_ARGUMENT_ANGLE     = 156.68 <deg>
+ORBITAL_SEMIMAJOR_AXIS       = 188775.21 <km>
+
+
+/* OTHERS */
+
+DESCRIPTION                  = "
+    This file contains refractivity, bending angle and impact parameter
+    profiles derived from Venus Climate Orbiter (VCO, also known as PLANET-C
+    and AKATSUKI) radio occultation data. The raw data were processed to
+    level 2 and converted to bending angles and impact parameters. These
+    results were then inverted to refractive index and refractivity via
+    an Abel transform.
+  "
+NOTE                         = "
+    The egress profile might suffer from the effect of a large latitudinal
+    movement of the ray path.
+  "
+
+
+/* ---- DATA OBJECTS DEFINITIONS ---- */
+
+OBJECT                       = REFR_TABLE
+
+  NAME                       = REFR_DATA
+  INTERCHANGE_FORMAT         = ASCII
+  ROW_BYTES                  = 306
+  ROWS                       = 336
+  COLUMNS                    = 19
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 1
+    NAME                     = SAMPLE_NUMBER
+    DATA_TYPE                = ASCII_INTEGER
+    START_BYTE               = 1
+    BYTES                    = 5
+    FORMAT                   = "I5"
+    UNIT                     = "N/A"
+    VALID_MINIMUM            = 1
+    DESCRIPTION              = "
+        The number of this row in the table, starting from 1 in the first
+        row.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 2
+    NAME                     = UTC_TIME
+    DATA_TYPE                = TIME
+    START_BYTE               = 8
+    BYTES                    = 23
+    FORMAT                   = "A23"
+    UNIT                     = "N/A"
+    DESCRIPTION              = "
+        The UTC receiver date and time of this measurement, in the format
+        YYYY-MM-DDThh:mm:ss.SSS.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 3
+    NAME                     = EPHEMERIS_SECONDS
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 33
+    BYTES                    = 16
+    FORMAT                   = "F16.6"
+    UNIT                     = "SECOND"
+    DESCRIPTION              = "
+        Seconds from 12h 1 January 2000 TDB corresponding to UTC_TIME
+        (column 2); includes leap seconds, if any.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 4
+    NAME                     = "RESIDUAL CALIBRATED X-BAND FREQUENCY SHIFT"
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 51
+    BYTES                    = 16
+    FORMAT                   = "F16.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -999999.999999
+    DESCRIPTION              = "
+        Observed sky frequency minus predicted frequency both taken from
+        level 2 file averaged for new sampling time.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 5
+    NAME                     = "RESIDUAL CALIBRATED X-BAND FREQUENCY SHIFT
+                                AFTER BASELINE FIT"
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 69
+    BYTES                    = 16
+    FORMAT                   = "F16.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -999999.999999
+    DESCRIPTION              = "
+        Value of `RESIDUAL CALIBRATED X-BAND FREQUENCY SHIFT' (column 4)
+        after subtraction of a polynomial to correct for non-atmospheric
+        effects.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 6
+    NAME                     = RECONSTRUCTED_TRANSMIT_FREQUENCY
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 87
+    BYTES                    = 19
+    FORMAT                   = "F19.6"
+    UNIT                     = "HERTZ"
+    VALID_MINIMUM            = 0.0
+    DESCRIPTION              = "
+        Reconstructed transmitted frequency of the spacecraft.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 7
+    NAME                     = RADIUS
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 108
+    BYTES                    = 12
+    FORMAT                   = "F12.3"
+    UNIT                     = "KILOMETER"
+    VALID_MINIMUM            = 0.0
+    DESCRIPTION              = "
+        Closest approach of the bended ray to the planet. The value gives
+        the distance between the bended ray and the center of the planet.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 8
+    NAME                     = SIGMA_RADIUS
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 122
+    BYTES                    = 11
+    FORMAT                   = "E11.4"
+    UNIT                     = "KILOMETER"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -0.9999E+01
+    DESCRIPTION              = "
+        One standard deviation uncertainty in RADIUS (column 7).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 9
+    NAME                     = BENDING_ANGLE
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 135
+    BYTES                    = 15
+    FORMAT                   = "F15.6"
+    UNIT                     = "10E-6 * RADIAN"
+    DESCRIPTION              = "
+        Total bending angle measured as the angle between the ray asymptotes
+        of the radio ray link.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 10
+    NAME                     = SIGMA_BENDING_ANGLE
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 152
+    BYTES                    = 15
+    FORMAT                   = "F15.6"
+    UNIT                     = "10E-6 * RADIAN"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -9999999.999999
+    DESCRIPTION              = "
+        One standard deviation uncertainty in BENDING_ANGLE (column 9).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 11
+    NAME                     = REFRACTIVE_INDEX
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 169
+    BYTES                    = 20
+    FORMAT                   = "F20.10"
+    UNIT                     = "N/A"
+    DESCRIPTION              = "
+        Refractive index of the atmosphere.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 12
+    NAME                     = REFRACTIVITY
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 191
+    BYTES                    = 15
+    FORMAT                   = "F15.6"
+    UNIT                     = "N/A"
+    DESCRIPTION              = "
+        Refractivity of the atmosphere.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 13
+    NAME                     = SIGMA_REFRACTIVITY
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 208
+    BYTES                    = 15
+    FORMAT                   = "F15.6"
+    UNIT                     = "N/A"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -9999999.999999
+    DESCRIPTION              = "
+        One standard deviation uncertainty in REFRACTIVITY (column 12).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 14
+    NAME                     = SIGNAL_LEVEL
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 225
+    BYTES                    = 11
+    FORMAT                   = "E11.4"
+    UNIT                     = "N/A"
+    INVALID_CONSTANT         = -0.9999E+01
+    DESCRIPTION              = "
+        Signal level in arbitrary linear unit with the effect of inaccurate
+        antenna pointing corrected (relative unit).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 15
+    NAME                     = DIFFERENTIAL_DOPPLER
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 238
+    BYTES                    = 18
+    FORMAT                   = "F18.6"
+    UNIT                     = "HERTZ"
+    INVALID_CONSTANT         = -99999999.999999
+    DESCRIPTION              = "
+        Contribution of dispersive media to the received signal frequency
+        calculated from two coherent bands.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 16
+    NAME                     = IMPACT_PARAMETER
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 258
+    BYTES                    = 12
+    FORMAT                   = "F12.3"
+    UNIT                     = "KILOMETER"
+    VALID_MINIMUM            = 0.0
+    DESCRIPTION              = "
+        Distance of the ray asymptotes to the planet. The value is defined
+        as the distance between the ray asymptote and the center of planet.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 17
+    NAME                     = SIGMA_IMPACT_PARAMETER
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 272
+    BYTES                    = 11
+    FORMAT                   = "E11.4"
+    UNIT                     = "KILOMETER"
+    VALID_MINIMUM            = 0.0
+    INVALID_CONSTANT         = -0.9999E+01
+    DESCRIPTION              = "
+        One standard deviation uncertainty in IMPACT_PARAMETER (column 16).
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 18
+    NAME                     = LONGITUDE
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 285
+    BYTES                    = 9
+    FORMAT                   = "F9.2"
+    UNIT                     = "DEGREE"
+    VALID_MAXIMUM            = 360.0
+    VALID_MINIMUM            = 0.0
+    DESCRIPTION              = "
+        East longitude of measurement in body fixed coordinates.
+      "
+  END_OBJECT                 = COLUMN
+
+  OBJECT                     = COLUMN
+    COLUMN_NUMBER            = 19
+    NAME                     = LATITUDE
+    DATA_TYPE                = ASCII_REAL
+    START_BYTE               = 296
+    BYTES                    = 9
+    FORMAT                   = "F9.2"
+    UNIT                     = "DEGREE"
+    VALID_MAXIMUM            = 90.0
+    VALID_MINIMUM            = -90.0
+    DESCRIPTION              = "
+        North latitude of measurement in body fixed coordinates.
+      "
+  END_OBJECT                 = COLUMN
+
+END_OBJECT                   = REFR_TABLE
+
+END
