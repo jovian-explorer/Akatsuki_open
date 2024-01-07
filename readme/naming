@@ -1,0 +1,91 @@
+    File naming conventions
+    -----------------------
+
+      The file naming conventions for the data files are same over the four
+      cameras, UVI, IR1, IR2, and LIR. In addition to the four cameras, the
+      data of LAC and RS have very similar file naming conventions. In this
+      section, the file naming conventions for the RS data is described.
+
+      The filename has the format
+
+          rs_{YYYY}{MM}{DD}_{hh}{mm}{ss}_{gs}_{level}_[{type}_]v{ver}.{ext}
+
+      where
+
+          {YYYY}:   year in four-digits
+
+          {MM}:     month in two-digits
+
+          {DD}:     day in two-digits
+
+          {hh}:     hour in two-digits
+
+          {mm}:     minute in two-digits
+
+          {ss}:     second in two-digits
+
+            Note that {YYYY}-{MM}-{DD}T{hh}:{mm}:{ss} means the representative
+            time of observation in UTC.
+
+          {gs}:     abbreviated name of ground station
+
+          {level}:  abbreviated name of product
+
+            The values of {level} is summarized in the following table. Note
+            that the product names, i.e., processing level definition is
+            different with other products, such as IR1, IR2, UVI, LIR, and
+            LAC.
+
+              {level}  DATA_SET_ID            description
+              -------  ---------------------  --------------------------------
+              l1       VCO-V-RS-2-OCC-V{VER}  recorded data at the ground
+              l2       VCO-V-RS-3-OCC-V{VER}  time series of signal intensity
+                                              and dominant frequency
+              l3       VCO-V-RS-5-OCC-V{VER}  time series of impact parameter,
+                                              refractivity, etc.
+              l4       VCO-V-RS-5-OCC-V{VER}  vertical profiles of atmospheric
+                                              density, temperature, etc.
+
+            where {VER} is version number of data set, e.g., 1.0.
+
+          {type}:   type of occultation and physical quantity
+
+              {level}  {type}  description
+              -------  ------  --------------------------------------------
+              l1       --      none, i.e., no ``type'' for this level.
+
+              l2       --      none, i.e., no ``type'' for this level.
+
+              l3       i       data obtained during ingress.
+              l3       e       data obtained during egress.
+
+              l4       ai      atmospheric temperature profile obtained during
+                               ingress.
+              l4       ae      atmospheric temperature profile obtained during
+                               egress.
+
+              l4       pi      sulfuric acid vapor mixing ratio profile
+                               obtained during ingress.
+              l4       pe      sulfuric acid vapor mixing ratio profile
+                               obtained during egress.
+
+              l4       ii      electron density profile obtained during
+                               ingress.
+              l4       ie      electron density profile obtained during
+                               egress.
+
+          {ver}:    version string of the product in 2 digits
+
+            The value is larger than or equal to 10. When the version number
+            appeared in DATA_SET_ID is multiplied by 10, the result is equal
+            to the value of {ver}.
+
+          {ext}:    extension of the file
+
+            The following typical extensions are included in this data set
+            The ``data'' directory contains only tab and lbl files.
+
+              {ext}  description
+              -----  ---------------------------------
+              lbl    PDS3 label file
+              tab    table format file with ASCII text
